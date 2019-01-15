@@ -74,6 +74,19 @@ void read(){
 
 }
 
+void mostraralunos(){
+    aluno *ptr =  head;
+
+    printf ("Nome \t\t Numero \t\t Turma  \t\t Teste 1 \t\t Teste 2 \t\t Av. Continua \t\t \n");
+
+    while (ptr != NULL) {
+
+        printf("%s \t%d \t%c \t%f \t %f \t %f\n", ptr->nome, ptr->numero, ptr->turma, ptr->t1, ptr->t2, ptr->av_cont);
+
+        ptr = ptr->next;
+    }
+}
+
 int main(){
     printAluno();
 
