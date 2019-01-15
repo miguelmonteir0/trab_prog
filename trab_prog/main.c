@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
-#include "alunos.h"
+
 
 typedef struct {
     char turma;
     char nome[40];
-    int numero;
+    int num;
     float t1;
     float t2;
     float av_cont;
@@ -74,24 +74,36 @@ void read(){
 
 }
 
-void mostraralunos(){
-    aluno *ptr =  head;
+void mostraralunos(int n1, int n2, int n_av){
+    aluno *ptr=head;
 
-    printf ("Nome \t\t Numero \t\t Turma  \t\t Teste 1 \t\t Teste 2 \t\t Av. Continua \t\t \n");
+    printf ("Nome \tNumero \tTurma  \tTeste 1 \tTeste 2 \tAv. Continua \n");
 
     while (ptr != NULL) {
+        ptr->media_f = (ptr->t1 * n1) + (ptr->t2 * n2) + (ptr->av_cont * n_av);
 
-        printf("%s \t%d \t%c \t%f \t %f \t %f\n", ptr->nome, ptr->numero, ptr->turma, ptr->t1, ptr->t2, ptr->av_cont);
+        printf("%s \t%d \t%c \t%.2f \t%.2f \t%.2f \t %.2f \n", ptr->nome, ptr->num, ptr->turma, ptr->t1, ptr->t2, ptr->av_cont, ptr->media_f);
 
         ptr = ptr->next;
     }
 }
 
 int main(){
-    printAluno();
 
     int escolha = -1;
+    float n1, n2, n_av;
 
+    printf("*********************************************REGISTO ESCOLAR************************************************\n");
+    printf("Defina o modelo de avaliacao: \n");
+    printf("Introduza a percentagem do primeiro teste [0-100]: \n");
+    scanf("%d", &n1);
+    printf("Introduza a percentagem do segundo teste [0-100]: \n");
+    scanf("%d", &n2);
+    printf("Introduza a percentagem da avaliacao continua [0-100]: \n");
+    scanf("%d", &n_av);
+    n1 = n1*0.01;
+    n2 = n2*0.01;
+    n_av = n_av*0.01
 
     while (escolha != 0){
         printf ("Escolha uma opcao\n");
@@ -122,4 +134,9 @@ int main(){
         }
     }
     return 0;
+}
+
+int ModeloAv (){
+
+
 }
